@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een frisse B2B-uitstraling met minimalistische datastroom
+# Custom CSS voor een levendig, high-tech B2B dashboard
 st.markdown(
     """
     <style>
@@ -20,43 +20,65 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #111827;
     }
-    .telemetry-box {
+    .telemetry-container {
         background-color: #ffffff;
         border: 1px solid #d4e2d8;
         border-radius: 10px;
-        padding: 18px 22px;
+        padding: 20px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 0.85rem;
-        color: #2e7d32;
+        color: #1f2937;
         margin-bottom: 25px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
     }
-    .telemetry-header {
+    .telemetry-title {
         font-weight: bold;
-        margin-bottom: 8px;
         color: #1b5e20;
+        margin-bottom: 12px;
         display: flex;
         align-items: center;
-        letter-spacing: 0.5px;
+        justify-content: space-between;
     }
-    .data-dot {
-        height: 8px;
-        width: 8px;
+    .indicator-group {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    .indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+    }
+    .led-green {
+        width: 10px;
+        height: 10px;
         background-color: #2e7d32;
         border-radius: 50%;
-        display: inline-block;
-        margin-right: 10px;
         box-shadow: 0 0 8px #2e7d32;
-        animation: pulse 2s infinite;
+        animation: pulse-green 2s infinite;
     }
-    @keyframes pulse {
-        0% { transform: scale(0.95); opacity: 0.8; }
-        50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #2e7d32; }
-        100% { transform: scale(0.95); opacity: 0.8; }
+    .led-red {
+        width: 10px;
+        height: 10px;
+        background-color: #c62828;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #c62828;
+        animation: pulse-red 3s infinite;
     }
-    .telemetry-line {
-        color: #374151;
-        margin: 4px 0;
+    @keyframes pulse-green {
+        0% { opacity: 0.4; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px #2e7d32; }
+        100% { opacity: 0.4; transform: scale(0.9); }
+    }
+    @keyframes pulse-red {
+        0% { opacity: 0.3; transform: scale(0.9); }
+        50% { opacity: 0.9; transform: scale(1.1); box-shadow: 0 0 10px #c62828; }
+        100% { opacity: 0.3; transform: scale(0.9); }
+    }
+    .telemetry-row {
+        margin: 6px 0;
+        transition: opacity 0.3s ease;
     }
     .card {
         background-color: #ffffff;
@@ -99,7 +121,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER & LIVE DATA STREAM ---
+# --- HEADER & LIVE DYNAMIC TELEMETRY PANEL ---
 st.title("Calibro360™")
 st.subheader(
     "The Next Generation in Biogas Predictive Control & Process Advisory"
@@ -107,12 +129,67 @@ st.subheader(
 
 st.markdown(
     """
-    <div class="telemetry-box">
-        <div class="telemetry-header"><span class="data-dot"></span>LIVE KINEMATICS & SCADA TELEMETRY STREAM</div>
-        <div class="telemetry-line">&gt; Substrate synchronization core: <b>Online (Active feed-cycle mapping)</b></div>
-        <div class="telemetry-line">&gt; Additive model matrix: <b>Calibrated (Real-time chemical spec integration)</b></div>
-        <div class="telemetry-line">&gt; H₂S reduction & methane yield vector: <b>Stable (+8.2% Efficiency Delta)</b></div>
+    <div class="telemetry-container">
+        <div class="telemetry-title">
+            <span>⚙️ LIVE SCADA & KINEMATICS TELEMETRY STREAM</span>
+            <div class="indicator-group">
+                <div class="indicator"><div class="led-green" id="sys-led"></div><span>SYS SYNC</span></div>
+                <div class="indicator"><div class="led-red" id="alert-led"></div><span>DOSING TRIM</span></div>
+            </div>
+        </div>
+        <div class="telemetry-row" id="line1">&gt; Biogas Flow Rate: <b>500 m³/h</b> | Feed-cycle synchronization: <b>Optimized</b></div>
+        <div class="telemetry-row" id="line2">&gt; H₂S Inlet / Outlet: <b>380 ppm / &lt; 5 ppm</b> (Fe₂O₃ / FeO Matrix Active)</div>
+        <div class="telemetry-row" id="line3">&gt; Methane Purity Vector: <b>54.6% CH₄</b> (+8.2% Efficiency Delta)</div>
     </div>
+
+    <script>
+    const payloads = [
+        {
+            flow: "500 m³/h", sync: "Optimized", h2sIn: "380 ppm", h2sOut: "< 5 ppm", ch4: "54.6%", alertColor: "#2e7d32", alertShadow: "0 0 8px #2e7d32"
+        },
+        {
+            flow: "505 m³/h", sync: "Recalibrating...", h2sIn: "395 ppm", h2sOut: "< 4 ppm", ch4: "55.1%", alertColor: "#c62828", alertShadow: "0 0 8px #c62828"
+        },
+        {
+            flow: "498 m³/h", sync: "Stable Core", h2sIn: "370 ppm", h2sOut: "< 5 ppm", ch4: "54.9%", alertColor: "#2e7d32", alertShadow: "0 0 8px #2e7d32"
+        },
+        {
+            flow: "502 m³/h", sync: "Synchronized", h2sIn: "385 ppm", h2sOut: "< 3 ppm", ch4: "55.3%", alertColor: "#e65100", alertShadow: "0 0 8px #e65100"
+        }
+    ];
+
+    let index = 0;
+    setInterval(() => {
+        index = (index + 1) % payloads.length;
+        const p = payloads[index];
+        
+        const l1 = document.getElementById("line1");
+        const l2 = document.getElementById("line2");
+        const l3 = document.getElementById("line3");
+        const alertLed = document.getElementById("alert-led");
+
+        if(l1 && l2 && l3) {
+            l1.style.opacity = 0.2;
+            l2.style.opacity = 0.2;
+            l3.style.opacity = 0.2;
+
+            setTimeout(() => {
+                l1.innerHTML = `&gt; Biogas Flow Rate: <b>${p.flow}</b> | Feed-cycle synchronization: <b>${p.sync}</b>`;
+                l2.innerHTML = `&gt; H₂S Inlet / Outlet: <b>${p.h2sIn} / ${p.h2sOut}</b> (Fe₂O₃ / FeO Matrix Active)`;
+                l3.innerHTML = `&gt; Methane Purity Vector: <b>${p.ch4} CH₄</b> (+8.2% Efficiency Delta)`;
+                
+                if(alertLed) {
+                    alertLed.style.backgroundColor = p.alertColor;
+                    alertLed.style.boxShadow = p.alertShadow;
+                }
+
+                l1.style.opacity = 1;
+                l2.style.opacity = 1;
+                l3.style.opacity = 1;
+            }, 300);
+        }
+    }, 5000);
+    </script>
     """,
     unsafe_allow_html=True,
 )
@@ -128,7 +205,7 @@ st.markdown(
     """
 )
 
-st.markdown("### Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
