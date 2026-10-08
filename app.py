@@ -8,12 +8,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een frisse, professionele B2B-uitstraling
+# Custom CSS voor een frisse, professionele B2B-uitstraling met lichtgroene achtergrond
 st.markdown(
     """
     <style>
     .main {
-        background-color: #f8f9fa;
+        background-color: #edf4f0;
         color: #212529;
     }
     h1, h2, h3 {
@@ -24,7 +24,7 @@ st.markdown(
         background-color: #ffffff;
         padding: 25px;
         border-radius: 10px;
-        border: 1px solid #e5e7eb;
+        border: 1px solid #d4e2d8;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
         color: #1f2937;
@@ -34,9 +34,9 @@ st.markdown(
         padding: 30px;
         border-radius: 10px;
         border-left: 5px solid #2e7d32;
-        border-top: 1px solid #e5e7eb;
-        border-right: 1px solid #e5e7eb;
-        border-bottom: 1px solid #e5e7eb;
+        border-top: 1px solid #d4e2d8;
+        border-right: 1px solid #d4e2d8;
+        border-bottom: 1px solid #d4e2d8;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin-top: 30px;
         color: #1f2937;
@@ -62,7 +62,7 @@ st.markdown(
     """
 )
 
-st.markdown("### Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### Process Optimization and Stabilisation by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
