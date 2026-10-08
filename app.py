@@ -12,7 +12,7 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .main {
+    .stApp {
         background-color: #edf4f0;
         color: #212529;
     }
@@ -62,7 +62,7 @@ st.markdown(
     """
 )
 
-st.markdown("### Process Optimization and Stabilisation by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### The future of Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
