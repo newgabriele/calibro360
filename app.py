@@ -37,7 +37,7 @@ st.markdown(
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #2d3748;
-        font-size: 0.75rem;
+        font-size: 0.90rem;
         color: #a0aec0;
         letter-spacing: 1px;
     }
