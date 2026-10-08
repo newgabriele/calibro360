@@ -41,6 +41,21 @@ st.markdown(
         margin-top: 30px;
         color: #1f2937;
     }
+    .btn-contact {
+        display: inline-block;
+        background-color: #2e7d32;
+        color: white !important;
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.2s;
+    }
+    .btn-contact:hover {
+        background-color: #235d26;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -62,7 +77,7 @@ st.markdown(
     """
 )
 
-st.markdown("### The future of Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
@@ -158,6 +173,7 @@ with txt_col:
         <i>Biochemical Process Consultant & Lead Architect</i></p>
         <p>📩 <b>Email:</b> ing.versolato@gmail.com<br>
         📞 <b>Phone:</b> +39 346 086 4380</p>
+        <a href="mailto:ing.versolato@gmail.com?subject=Inquiry%20regarding%20Calibro360™" class="btn-contact">✉ Request Information / Direct Contact</a>
         </div>
         """,
         unsafe_allow_html=True,
