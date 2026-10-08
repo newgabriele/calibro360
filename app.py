@@ -174,7 +174,7 @@ with col1:
         """
         <div class="card">
         <h4>🎯 Precision & Stability</h4>
-        <p><b>Exact dosing of additives, no spoil.</b> A stable process also after changes in the substrates.</p>
+        <p><b>Prediction dosing of additives, no spoil.</b> Maintaining a stable process also after changes in the substrates.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -208,8 +208,8 @@ with col4:
     st.markdown(
         """
         <div class="card">
-        <h4>🔧 Lower Maintenance</h4>
-        <p><b>Extended oil change interval.</b> Longer service life for the carbon filters.</p>
+        <h4>🔧 Lower Maintenance costs</h4> 
+        <p><b>Extended oil change interval CHP.</b> Longer service life for the carbon filters.</p>
         </div>
         """,
         unsafe_allow_html=True,
