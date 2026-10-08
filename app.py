@@ -124,16 +124,30 @@ st.markdown(
 st.markdown("---")
 
 # --- CONTACT & ADVISORY ---
+st.markdown("### Contact & Advisory Requests")
 st.markdown(
     """
     <div class="contact-box">
-    <h3>Contact & Advisory Requests</h3>
     <p>For calibrated trial simulations, independent data analysis, or process control implementation, please contact:</p>
-    <p><b>Ing. Gabriele Versolato</b><br>
-    <i>Biochemical Process Consultant & Lead Architect</i></p>
-    <p>📩 <b>Email:</b> ing.versolato@gmail.com<br>
-    📞 <b>Phone:</b> +39 346 086 4380</p>
     </div>
     """,
     unsafe_allow_html=True,
 )
+
+img_col, txt_col = st.columns([1, 4])
+
+with img_col:
+    st.image("foto 063023.jpg", use_container_width=True)
+
+with txt_col:
+    st.markdown(
+        """
+        <div style="padding-top: 5px;">
+        <p><b>Ing. Gabriele Versolato</b><br>
+        <i>Biochemical Process Consultant & Lead Architect</i></p>
+        <p>📩 <b>Email:</b> ing.versolato@gmail.com<br>
+        📞 <b>Phone:</b> +39 346 086 4380</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
