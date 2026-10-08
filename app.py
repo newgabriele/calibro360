@@ -116,7 +116,7 @@ st.markdown(
 # --- HEADER & SCADA MONITOR PANEL ---
 st.title("Calibro360™")
 st.subheader(
-    "The Next Generation in Biogas Predictive Control & Process Advisory"
+    "The Next Generation Telemetric Predictive Control & Process Advisory"
 )
 
 st.markdown(
@@ -152,7 +152,7 @@ st.markdown(
     """
 )
 
-st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### Process Control & Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
