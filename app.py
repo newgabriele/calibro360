@@ -123,6 +123,17 @@ st.markdown(
 
 st.markdown("---")
 
+# --- FROM OPERATIONS TO THE BOARDROOM ---
+st.markdown("### From operations to the boardroom")
+st.markdown(
+    """
+    Modern operations are no longer just about "gut feeling" - they are driven by raw efficiency, strict environmental compliance, and shareholder value. 
+    When operators are equipped with clear, actionable guidelines, they can run the plant safely and more comfortably, and the results naturally follow.
+    """
+)
+
+st.markdown("---")
+
 # --- CONTACT & ADVISORY ---
 st.markdown("### Contact & Advisory Requests")
 st.markdown(
