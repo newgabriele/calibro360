@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een frisse, professionele B2B-uitstraling met lichtgroene achtergrond
+# Custom CSS voor een frisse B2B-uitstraling met futuristische elementen
 st.markdown(
     """
     <style>
@@ -19,6 +19,29 @@ st.markdown(
     h1, h2, h3 {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #111827;
+    }
+    .tech-badge {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        display: inline-block;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .telemetry-ticker {
+        background-color: #ffffff;
+        border: 1px solid #d4e2d8;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.82rem;
+        color: #2e7d32;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
     }
     .card {
         background-color: #ffffff;
@@ -61,10 +84,18 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER ---
+# --- HEADER & FUTURISTIC TELEMETRY ---
 st.title("Calibro360™")
+st.markdown(
+    '<div class="tech-badge">⚡ AI-DRIVEN PREDICTIVE CONTROL CORE</div>',
+    unsafe_allow_html=True,
+)
 st.subheader(
     "The Next Generation in Biogas Predictive Control & Process Advisory"
+)
+st.markdown(
+    '<div class="telemetry-ticker">🟢 SYSTEM STATUS: ACTIVE &nbsp;|&nbsp; SCADA SYNC: REAL-TIME &nbsp;|&nbsp; KINEMATICS ENGINE: ONLINE</div>',
+    unsafe_allow_html=True,
 )
 st.markdown("---")
 
