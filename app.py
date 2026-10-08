@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een levendig, high-tech B2B dashboard
+# Custom CSS voor een levendig, dynamisch B2B dashboard
 st.markdown(
     """
     <style>
@@ -38,43 +38,6 @@ st.markdown(
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-    .indicator-group {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-    }
-    .indicator {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.75rem;
-    }
-    .led-green {
-        width: 10px;
-        height: 10px;
-        background-color: #2e7d32;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #2e7d32;
-        animation: pulse-green 2s infinite;
-    }
-    .led-red {
-        width: 10px;
-        height: 10px;
-        background-color: #c62828;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #c62828;
-        animation: pulse-red 3s infinite;
-    }
-    @keyframes pulse-green {
-        0% { opacity: 0.4; transform: scale(0.9); }
-        50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px #2e7d32; }
-        100% { opacity: 0.4; transform: scale(0.9); }
-    }
-    @keyframes pulse-red {
-        0% { opacity: 0.3; transform: scale(0.9); }
-        50% { opacity: 0.9; transform: scale(1.1); box-shadow: 0 0 10px #c62828; }
-        100% { opacity: 0.3; transform: scale(0.9); }
     }
     .telemetry-row {
         margin: 6px 0;
@@ -132,63 +95,59 @@ st.markdown(
     <div class="telemetry-container">
         <div class="telemetry-title">
             <span>⚙️ LIVE SCADA & KINEMATICS TELEMETRY STREAM</span>
-            <div class="indicator-group">
-                <div class="indicator"><div class="led-green" id="sys-led"></div><span>SYS SYNC</span></div>
-                <div class="indicator"><div class="led-red" id="alert-led"></div><span>DOSING TRIM</span></div>
-            </div>
+            <span id="status-badge" style="color: #2e7d32; font-weight: bold;">● SYSTEM OPTIMIZED</span>
         </div>
-        <div class="telemetry-row" id="line1">&gt; Biogas Flow Rate: <b>500 m³/h</b> | Feed-cycle synchronization: <b>Optimized</b></div>
-        <div class="telemetry-row" id="line2">&gt; H₂S Inlet / Outlet: <b>380 ppm / &lt; 5 ppm</b> (Fe₂O₃ / FeO Matrix Active)</div>
-        <div class="telemetry-row" id="line3">&gt; Methane Purity Vector: <b>54.6% CH₄</b> (+8.2% Efficiency Delta)</div>
+        <div class="telemetry-row" id="line1">&gt; Biogas Flow Rate: <b id="val-flow">500.0 m³/h</b> | Feed-cycle sync: <span id="val-sync" style="color: #2e7d32; font-weight: bold;">OPTIMIZED</span></div>
+        <div class="telemetry-row" id="line2">&gt; H₂S Inlet / Outlet: <b id="val-h2s">380 ppm / &lt; 5 ppm</b> (Fe₂O₃ / FeO Matrix Active)</div>
+        <div class="telemetry-row" id="line3">&gt; Methane Purity Vector: <b id="val-ch4">54.6% CH₄</b> (<span id="val-delta" style="color: #2e7d32; font-weight: bold;">+8.2% Efficiency Delta</span>)</div>
     </div>
 
     <script>
-    const payloads = [
-        {
-            flow: "500 m³/h", sync: "Optimized", h2sIn: "380 ppm", h2sOut: "< 5 ppm", ch4: "54.6%", alertColor: "#2e7d32", alertShadow: "0 0 8px #2e7d32"
-        },
-        {
-            flow: "505 m³/h", sync: "Recalibrating...", h2sIn: "395 ppm", h2sOut: "< 4 ppm", ch4: "55.1%", alertColor: "#c62828", alertShadow: "0 0 8px #c62828"
-        },
-        {
-            flow: "498 m³/h", sync: "Stable Core", h2sIn: "370 ppm", h2sOut: "< 5 ppm", ch4: "54.9%", alertColor: "#2e7d32", alertShadow: "0 0 8px #2e7d32"
-        },
-        {
-            flow: "502 m³/h", sync: "Synchronized", h2sIn: "385 ppm", h2sOut: "< 3 ppm", ch4: "55.3%", alertColor: "#e65100", alertShadow: "0 0 8px #e65100"
-        }
-    ];
+    function updateTelemetry() {
+        // Genereer dynamische variatie rond de 500 m³/h
+        const flowVal = (495 + Math.random() * 10).toFixed(1);
+        const h2sInVal = Math.floor(375 + Math.random() * 25);
+        const h2sOutVal = Math.floor(3 + Math.random() * 3);
+        const ch4Val = (54.0 + Math.random() * 1.5).toFixed(1);
 
-    let index = 0;
-    setInterval(() => {
-        index = (index + 1) % payloads.length;
-        const p = payloads[index];
-        
-        const l1 = document.getElementById("line1");
-        const l2 = document.getElementById("line2");
-        const l3 = document.getElementById("line3");
-        const alertLed = document.getElementById("alert-led");
+        // Lijst met statussen en hun bijbehorende kleuren (groen, oranje, rood)
+        const states = [
+            { text: "OPTIMIZED", color: "#2e7d32" },      // Groen
+            { text: "RECALIBRATING", color: "#e65100" }, // Oranje
+            { text: "PEAK STABLE", color: "#2e7d32" },   // Groen
+            { text: "HIGH LOAD TRIM", color: "#c62828" } // Rood
+        ];
 
-        if(l1 && l2 && l3) {
-            l1.style.opacity = 0.2;
-            l2.style.opacity = 0.2;
-            l3.style.opacity = 0.2;
+        const deltas = [
+            { text: "+8.2% Efficiency Delta", color: "#2e7d32" },
+            { text: "+7.6% Efficiency Delta", color: "#e65100" },
+            { text: "+8.5% Efficiency Delta", color: "#2e7d32" },
+            { text: "+5.9% Efficiency Delta", color: "#c62828" }
+        ];
 
-            setTimeout(() => {
-                l1.innerHTML = `&gt; Biogas Flow Rate: <b>${p.flow}</b> | Feed-cycle synchronization: <b>${p.sync}</b>`;
-                l2.innerHTML = `&gt; H₂S Inlet / Outlet: <b>${p.h2sIn} / ${p.h2sOut}</b> (Fe₂O₃ / FeO Matrix Active)`;
-                l3.innerHTML = `&gt; Methane Purity Vector: <b>${p.ch4} CH₄</b> (+8.2% Efficiency Delta)`;
-                
-                if(alertLed) {
-                    alertLed.style.backgroundColor = p.alertColor;
-                    alertLed.style.boxShadow = p.alertShadow;
-                }
+        const randomState = states[Math.floor(Math.random() * states.length)];
+        const randomDelta = deltas[Math.floor(Math.random() * deltas.length)];
 
-                l1.style.opacity = 1;
-                l2.style.opacity = 1;
-                l3.style.opacity = 1;
-            }, 300);
-        }
-    }, 5000);
+        // Update de DOM elementen vloeiend
+        document.getElementById("val-flow").innerText = flowVal + " m³/h";
+        document.getElementById("val-h2s").innerText = h2sInVal + " ppm / < " + h2sOutVal + " ppm";
+        document.getElementById("val-ch4").innerText = ch4Val + "% CH₄";
+
+        const syncEl = document.getElementById("val-sync");
+        syncEl.innerText = randomState.text;
+        syncEl.style.color = randomState.color;
+
+        const deltaEl = document.getElementById("val-delta");
+        deltaEl.innerText = randomDelta.text;
+        deltaEl.style.color = randomDelta.color;
+
+        const badgeEl = document.getElementById("status-badge");
+        badgeEl.innerText = "● SYSTEM " + randomState.text;
+        badgeEl.style.color = randomState.color;
+    }
+
+    // Elke 4 seconden verversen
+    setInterval(updateTelemetry, 4000);
     </script>
     """,
     unsafe_allow_html=True,
