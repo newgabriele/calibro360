@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een levendig, dynamisch B2B dashboard
+# Custom CSS met een echte "SCADA Screen / Monitor" look
 st.markdown(
     """
     <style>
@@ -20,29 +20,58 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #111827;
     }
-    .telemetry-container {
-        background-color: #ffffff;
-        border: 1px solid #d4e2d8;
-        border-radius: 10px;
-        padding: 20px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 0.85rem;
-        color: #1f2937;
+    /* SCADA Monitor Scherm Look */
+    .scada-monitor {
+        background-color: #0d131f;
+        border: 2px solid #2d3748;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.5);
         margin-bottom: 25px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+        overflow: hidden;
+        font-family: 'Courier New', Courier, monospace;
     }
-    .telemetry-title {
-        font-weight: bold;
-        color: #1b5e20;
-        margin-bottom: 12px;
+    .scada-header {
+        background-color: #1a202c;
+        padding: 8px 15px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 1px solid #2d3748;
+        font-size: 0.75rem;
+        color: #a0aec0;
+        letter-spacing: 1px;
     }
-    .telemetry-row {
+    .scada-dots {
+        display: flex;
+        gap: 6px;
+    }
+    .scada-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+    .dot-red { background-color: #fc8181; }
+    .dot-yellow { background-color: #f6ad55; }
+    .dot-green { background-color: #68d391; box-shadow: 0 0 6px #68d391; }
+    
+    .scada-body {
+        padding: 20px;
+        font-size: 0.85rem;
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+    .scada-row {
         margin: 6px 0;
-        transition: opacity 0.3s ease;
     }
+    .highlight-green {
+        color: #68d391;
+        font-weight: bold;
+    }
+    .highlight-cyan {
+        color: #63b3ed;
+        font-weight: bold;
+    }
+
     .card {
         background-color: #ffffff;
         padding: 25px;
@@ -84,7 +113,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER & LIVE DYNAMIC TELEMETRY PANEL ---
+# --- HEADER & SCADA MONITOR PANEL ---
 st.title("Calibro360™")
 st.subheader(
     "The Next Generation in Biogas Predictive Control & Process Advisory"
@@ -92,63 +121,22 @@ st.subheader(
 
 st.markdown(
     """
-    <div class="telemetry-container">
-        <div class="telemetry-title">
-            <span>⚙️ LIVE SCADA & KINEMATICS TELEMETRY STREAM</span>
-            <span id="status-badge" style="color: #2e7d32; font-weight: bold;">● SYSTEM OPTIMIZED</span>
+    <div class="scada-monitor">
+        <div class="scada-header">
+            <div class="scada-dots">
+                <div class="scada-dot dot-red"></div>
+                <div class="scada-dot dot-yellow"></div>
+                <div class="scada-dot dot-green"></div>
+            </div>
+            <span>CALIBRO360™ // HMI_SCADA_CORE_V3.6</span>
+            <span>STATUS: ONLINE</span>
         </div>
-        <div class="telemetry-row" id="line1">&gt; Biogas Flow Rate: <b id="val-flow">500.0 m³/h</b> | Feed-cycle sync: <span id="val-sync" style="color: #2e7d32; font-weight: bold;">OPTIMIZED</span></div>
-        <div class="telemetry-row" id="line2">&gt; H₂S Inlet / Outlet: <b id="val-h2s">380 ppm / &lt; 5 ppm</b> (Fe₂O₃ / FeO Matrix Active)</div>
-        <div class="telemetry-row" id="line3">&gt; Methane Purity Vector: <b id="val-ch4">54.6% CH₄</b> (<span id="val-delta" style="color: #2e7d32; font-weight: bold;">+8.2% Efficiency Delta</span>)</div>
+        <div class="scada-body">
+            <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
+            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
+            <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
+        </div>
     </div>
-
-    <script>
-    function updateTelemetry() {
-        // Genereer dynamische variatie rond de 500 m³/h
-        const flowVal = (495 + Math.random() * 10).toFixed(1);
-        const h2sInVal = Math.floor(375 + Math.random() * 25);
-        const h2sOutVal = Math.floor(3 + Math.random() * 3);
-        const ch4Val = (54.0 + Math.random() * 1.5).toFixed(1);
-
-        // Lijst met statussen en hun bijbehorende kleuren (groen, oranje, rood)
-        const states = [
-            { text: "OPTIMIZED", color: "#2e7d32" },      // Groen
-            { text: "RECALIBRATING", color: "#e65100" }, // Oranje
-            { text: "PEAK STABLE", color: "#2e7d32" },   // Groen
-            { text: "HIGH LOAD TRIM", color: "#c62828" } // Rood
-        ];
-
-        const deltas = [
-            { text: "+8.2% Efficiency Delta", color: "#2e7d32" },
-            { text: "+7.6% Efficiency Delta", color: "#e65100" },
-            { text: "+8.5% Efficiency Delta", color: "#2e7d32" },
-            { text: "+5.9% Efficiency Delta", color: "#c62828" }
-        ];
-
-        const randomState = states[Math.floor(Math.random() * states.length)];
-        const randomDelta = deltas[Math.floor(Math.random() * deltas.length)];
-
-        // Update de DOM elementen vloeiend
-        document.getElementById("val-flow").innerText = flowVal + " m³/h";
-        document.getElementById("val-h2s").innerText = h2sInVal + " ppm / < " + h2sOutVal + " ppm";
-        document.getElementById("val-ch4").innerText = ch4Val + "% CH₄";
-
-        const syncEl = document.getElementById("val-sync");
-        syncEl.innerText = randomState.text;
-        syncEl.style.color = randomState.color;
-
-        const deltaEl = document.getElementById("val-delta");
-        deltaEl.innerText = randomDelta.text;
-        deltaEl.style.color = randomDelta.color;
-
-        const badgeEl = document.getElementById("status-badge");
-        badgeEl.innerText = "● SYSTEM " + randomState.text;
-        badgeEl.style.color = randomState.color;
-    }
-
-    // Elke 4 seconden verversen
-    setInterval(updateTelemetry, 4000);
-    </script>
     """,
     unsafe_allow_html=True,
 )
