@@ -62,7 +62,7 @@ st.markdown(
     """
 )
 
-st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
