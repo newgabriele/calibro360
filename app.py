@@ -174,7 +174,7 @@ with col1:
         """
         <div class="card">
         <h4>🎯 Precision & Stability</h4>
-        <p><b>Prediction dosing of additives, no spoil.</b> Maintaining a stable process also after changes in the substrates.</p>
+        <p><b>Predictive dosing of additives, no spoil.</b> Maintaining a stable process also after changes in the substrates.</p>
         </div>
         """,
         unsafe_allow_html=True,
