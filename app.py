@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een frisse B2B-uitstraling met futuristische elementen
+# Custom CSS voor een frisse B2B-uitstraling met minimalistische datastroom
 st.markdown(
     """
     <style>
@@ -20,28 +20,43 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #111827;
     }
-    .tech-badge {
-        background: linear-gradient(135deg, #2e7d32, #1b5e20);
-        color: white;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.8px;
-        display: inline-block;
-        margin-bottom: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .telemetry-ticker {
+    .telemetry-box {
         background-color: #ffffff;
         border: 1px solid #d4e2d8;
-        border-radius: 8px;
-        padding: 10px 18px;
+        border-radius: 10px;
+        padding: 18px 22px;
         font-family: 'Courier New', Courier, monospace;
-        font-size: 0.82rem;
+        font-size: 0.85rem;
         color: #2e7d32;
         margin-bottom: 25px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    }
+    .telemetry-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #1b5e20;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.5px;
+    }
+    .data-dot {
+        height: 8px;
+        width: 8px;
+        background-color: #2e7d32;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+        box-shadow: 0 0 8px #2e7d32;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(0.95); opacity: 0.8; }
+        50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #2e7d32; }
+        100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .telemetry-line {
+        color: #374151;
+        margin: 4px 0;
     }
     .card {
         background-color: #ffffff;
@@ -84,19 +99,24 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER & FUTURISTIC TELEMETRY ---
+# --- HEADER & LIVE DATA STREAM ---
 st.title("Calibro360™")
-st.markdown(
-    '<div class="tech-badge">⚡ AI-DRIVEN PREDICTIVE CONTROL CORE</div>',
-    unsafe_allow_html=True,
-)
 st.subheader(
     "The Next Generation in Biogas Predictive Control & Process Advisory"
 )
+
 st.markdown(
-    '<div class="telemetry-ticker">🟢 SYSTEM STATUS: ACTIVE &nbsp;|&nbsp; SCADA SYNC: REAL-TIME &nbsp;|&nbsp; KINEMATICS ENGINE: ONLINE</div>',
+    """
+    <div class="telemetry-box">
+        <div class="telemetry-header"><span class="data-dot"></span>LIVE KINEMATICS & SCADA TELEMETRY STREAM</div>
+        <div class="telemetry-line">&gt; Substrate synchronization core: <b>Online (Active feed-cycle mapping)</b></div>
+        <div class="telemetry-line">&gt; Additive model matrix: <b>Calibrated (Real-time chemical spec integration)</b></div>
+        <div class="telemetry-line">&gt; H₂S reduction & methane yield vector: <b>Stable (+8.2% Efficiency Delta)</b></div>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
+
 st.markdown("---")
 
 # --- INTRO ---
@@ -108,7 +128,7 @@ st.markdown(
     """
 )
 
-st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### Process Optimization & Stabilisation by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
