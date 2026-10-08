@@ -116,7 +116,7 @@ st.markdown(
 # --- HEADER & SCADA MONITOR PANEL ---
 st.title("Calibro360™")
 st.subheader(
-    "The Next Generation Telemetric Predictive Control & Process Advisory"
+    "The New Telemetric Predictive Control & Process Advisory System"
 )
 
 st.markdown(
