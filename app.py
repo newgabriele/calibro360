@@ -1,0 +1,150 @@
+import streamlit as st
+
+# Pagina configuratie
+st.set_page_config(
+    page_title="Calibro360™ | Biogas Predictive Control",
+    page_icon="⚙️",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
+
+# Custom CSS voor een strakke, industriële B2B-uitstraling
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #0e1117;
+        color: #ffffff;
+    }
+    h1, h2, h3 {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #f0f2f6;
+    }
+    .highlight {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    .card {
+        background-color: #1a1c24;
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid #2d3139;
+        margin-bottom: 20px;
+    }
+    .contact-box {
+        background-color: #1f242d;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 5px solid #4CAF50;
+        margin-top: 30px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- HEADER ---
+st.title("Calibro360™")
+st.subheader(
+    "The Next Generation in Biogas Predictive Control & Calibrated Process Advisory"
+)
+st.markdown("---")
+
+# --- INTRO ---
+st.markdown(
+    """
+    In the biogas industry, software concepts frequently emerge. While these types of systems promise substantial increases in gas production, 
+    the harsh process engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages ($CH_4$) 
+    rather than actual, corrected gas volumes. 
+    
+    Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
+    """
+)
+
+st.markdown("### The Engine of the Future: Process Optimization by Continuous Data Calibrating")
+st.markdown(
+    """
+    **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor-made platform has been built from the ground up, 
+    based on the latest insights in biochemical process engineering. 
+    
+    * **Calibrated with real operational data (SCADA):** Our predictive control model is continuously trained and calibrated. 
+    * **Robust & Real-time:** This ensures that predictions regarding $H_2S$ reduction and gas kinetics are robust, stable, and accurate in real-time.
+    """
+)
+
+st.markdown("---")
+
+# --- BENEFITS ---
+st.markdown("### Key Benefits")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🎯 Precision & Stability</h4>
+        <p><b>Exact dosing of additives, no spoil.</b> Ensures a stable process even after sudden changes in substrate composition.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col2:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>📈 Maximum Yield</h4>
+        <p><b>Demonstrates up to 20% higher volume of biogas.</b> From static monitoring to dynamic, predictive feed-cycle synchronization.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown(
+    """
+    <div class="card">
+    <h4>🔬 Unmatched Methane Quality</h4>
+    <p>Achieves up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in-situ desulfurization methods.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- BRAND INDEPENDENT ---
+st.markdown("### 100% Brand-Independent")
+st.markdown(
+    """
+    Every type of desulfurization additive on the market—whether it concerns different types of iron oxide, iron hydroxide, or specific chemical 
+    blends from any manufacturer—can be inputted based on its exact chemical specifications to model the biological impact.
+    
+    *For major waste haulers and plant owners, this mass reduction yields a financial saving that often exceeds the value of the extra biomethane produced.*
+    """
+)
+
+st.markdown("---")
+
+# --- OPERATIONS TO BOARDROOM ---
+st.markdown("### From Operations to the Boardroom")
+st.markdown(
+    """
+    Modern operations are no longer just about "gut feeling"—they are driven by raw efficiency, strict environmental compliance, 
+    and shareholder value. When operators are equipped with clear, actionable guidelines, they can run the plant safely and more comfortably, 
+    and the results naturally follow.
+    """
+)
+
+# --- CONTACT & ADVISORY ---
+st.markdown(
+    """
+    <div class="contact-box">
+    <h3>Contact & Advisory Requests</h3>
+    <p>For calibrated trial simulations, independent data analysis, or process control implementation, please contact:</p>
+    <p><b>Ing. Gabriele Versolato</b><br>
+    <i>Biochemical Process Consultant & Lead Architect</i></p>
+    <p>📩 <b>Email:</b> ing.versolato@gmail.com<br>
+    📞 <b>Phone:</b> +39 346 086 4380</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
