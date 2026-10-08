@@ -133,7 +133,7 @@ st.markdown(
         </div>
         <div class="scada-body">
             <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
-            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
+            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">480 ppm / &lt; 100 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
             <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
         </div>
     </div>
