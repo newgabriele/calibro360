@@ -49,36 +49,32 @@ st.markdown(
 # --- HEADER ---
 st.title("Calibro360™")
 st.subheader(
-    "The Next Generation in Biogas Predictive Control & Calibrated Process Advisory"
+    "The Next Generation in Biogas Predictive Control & Process Advisory"
 )
 st.markdown("---")
 
 # --- INTRO ---
 st.markdown(
     """
-    In the biogas industry, software concepts frequently emerge. While these types of systems promise substantial increases in gas production, 
-    the harsh process engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages (CH4) 
-    rather than actual, corrected gas volumes. 
-    
-    Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
+    In the biogas industry, software concepts frequently emerge. While these type of systems promise substantial increases in gas production, the harsh process 
+    engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages (CH₄) rather than actual, corrected gas 
+    volumes. Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
     """
 )
 
-st.markdown("### The Engine of the Future: Process Optimization by Continuous Data Calibrating")
+st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
-    **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor-made platform has been built from the ground up, 
-    based on the latest insights in biochemical process engineering. 
-    
-    * **Calibrated with real operational data (SCADA):** Our predictive control model is continuously trained and calibrated. 
-    * **Robust & Real-time:** This ensures that predictions regarding H2S reduction and gas kinetics are robust, stable, and accurate in real-time.
+    **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
+    insights in biochemical process engineering. Calibrated with real operational data (SCADA): Our predictive control model will be calibrated. This ensures 
+    that predictions regarding H₂S reduction and gas kinetics are robust, stable, and accurate in real-time.
     """
 )
 
 st.markdown("---")
 
 # --- BENEFITS ---
-st.markdown("### Key Benefits")
+st.markdown("### Benefits")
 
 col1, col2 = st.columns(2)
 
@@ -87,7 +83,7 @@ with col1:
         """
         <div class="card">
         <h4>🎯 Precision & Stability</h4>
-        <p><b>Exact dosing of additives, no spoil.</b> Ensures a stable process even after sudden changes in substrate composition.</p>
+        <p><b>Exact dosing of additives, no spoil.</b> A stable process also after changes in the substrates.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -98,7 +94,7 @@ with col2:
         """
         <div class="card">
         <h4>📈 Maximum Yield</h4>
-        <p><b>Demonstrates up to 20% higher volume of biogas.</b> From static monitoring to dynamic, predictive feed-cycle synchronization.</p>
+        <p><b>Demonstrates up to 20% higher volume of biogas.</b> From static monitoring to a dynamic, predictive feed-cycle synchronization.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -107,8 +103,8 @@ with col2:
 st.markdown(
     """
     <div class="card">
-    <h4>🔬 Unmatched Methane Quality</h4>
-    <p>Achieves up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in-situ desulfurization methods.</p>
+    <h4>🔬 Methane Quality</h4>
+    <p>Real field data demonstrates up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in situ desulfurization methods.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -118,24 +114,14 @@ st.markdown(
 st.markdown("### 100% Brand-Independent")
 st.markdown(
     """
-    Every type of desulfurization additive on the market—whether it concerns different types of iron oxide, iron hydroxide, or specific chemical 
-    blends from any manufacturer—can be inputted based on its exact chemical specifications to model the biological impact.
+    Every type of desulfurization additive on the market whether the different types, of iron oxide, iron hydroxide, or specific chemical blends from any manufacturer can 
+    be inputted based on its exact chemical specifications to model the biological impact.
     
     *For major waste haulers and plant owners, this mass reduction yields a financial saving that often exceeds the value of the extra biomethane produced.*
     """
 )
 
 st.markdown("---")
-
-# --- OPERATIONS TO BOARDROOM ---
-st.markdown("### From Operations to the Boardroom")
-st.markdown(
-    """
-    Modern operations are no longer just about "gut feeling"—they are driven by raw efficiency, strict environmental compliance, 
-    and shareholder value. When operators are equipped with clear, actionable guidelines, they can run the plant safely and more comfortably, 
-    and the results naturally follow.
-    """
-)
 
 # --- CONTACT & ADVISORY ---
 st.markdown(
