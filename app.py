@@ -37,7 +37,7 @@ st.markdown(
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #2d3748;
-        font-size: 0.90rem;
+        font-size: 0.85rem;
         color: #a0aec0;
         letter-spacing: 1px;
     }
@@ -80,6 +80,7 @@ st.markdown(
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
         color: #1f2937;
+        height: 100%;
     }
     .contact-box {
         background-color: #ffffff;
@@ -116,7 +117,7 @@ st.markdown(
 # --- HEADER & SCADA MONITOR PANEL ---
 st.title("Calibro360™")
 st.subheader(
-    "The New Telemetric Predictive Control & Process Advisory System"
+    "The Next Generation in Biogas Predictive Control & Process Advisory"
 )
 
 st.markdown(
@@ -128,12 +129,12 @@ st.markdown(
                 <div class="scada-dot dot-yellow"></div>
                 <div class="scada-dot dot-green"></div>
             </div>
-            <span>CALIBRO360™ // HMI_SCADA_CORE_V3.6</span>
+            <span style="color: #ffffff; font-weight: bold;">CALIBRO360™ // LIVE TELEMETRY & SCADA CORE</span>
             <span>STATUS: ONLINE</span>
         </div>
         <div class="scada-body">
             <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
-            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">480 ppm / &lt; 100 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
+            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
             <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
         </div>
     </div>
@@ -152,7 +153,7 @@ st.markdown(
     """
 )
 
-st.markdown("### Process Control & Optimization by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### The Engine of the Future: Process Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
     """
     **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
@@ -163,7 +164,7 @@ st.markdown(
 
 st.markdown("---")
 
-# --- BENEFITS ---
+# --- BENEFITS (2x2 GRID) ---
 st.markdown("### Benefits")
 
 col1, col2 = st.columns(2)
@@ -173,7 +174,7 @@ with col1:
         """
         <div class="card">
         <h4>🎯 Precision & Stability</h4>
-        <p><b>Exact dosing of additives. No spoil.</b> Maintain a stable process after changes in the substrates.</p>
+        <p><b>Exact dosing of additives, no spoil.</b> A stable process also after changes in the substrates.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -190,15 +191,31 @@ with col2:
         unsafe_allow_html=True,
     )
 
-st.markdown(
-    """
-    <div class="card">
-    <h4>🔬 Methane Quality</h4>
-    <p>Real field data demonstrates up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in situ desulfurization methods.</p>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+col3, col4 = st.columns(2)
+
+with col3:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🔬 Methane Quality</h4>
+        <p>Real field data demonstrates up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in situ desulfurization methods.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col4:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🔧 Lower Maintenance</h4>
+        <p><b>Extended oil change interval.</b> Longer service life for the carbon filters.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown("---")
 
 # --- BRAND INDEPENDENT ---
 st.markdown("### 100% Brand-Independent")
