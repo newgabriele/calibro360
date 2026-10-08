@@ -8,35 +8,38 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS voor een strakke, industriële B2B-uitstraling
+# Custom CSS voor een frisse, professionele B2B-uitstraling
 st.markdown(
     """
     <style>
     .main {
-        background-color: #0e1117;
-        color: #ffffff;
+        background-color: #f8f9fa;
+        color: #212529;
     }
     h1, h2, h3 {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        color: #f0f2f6;
-    }
-    .highlight {
-        color: #4CAF50;
-        font-weight: bold;
+        color: #111827;
     }
     .card {
-        background-color: #1a1c24;
+        background-color: #ffffff;
         padding: 25px;
         border-radius: 10px;
-        border: 1px solid #2d3139;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
+        color: #1f2937;
     }
     .contact-box {
-        background-color: #1f242d;
+        background-color: #ffffff;
         padding: 30px;
         border-radius: 10px;
-        border-left: 5px solid #4CAF50;
+        border-left: 5px solid #2e7d32;
+        border-top: 1px solid #e5e7eb;
+        border-right: 1px solid #e5e7eb;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin-top: 30px;
+        color: #1f2937;
     }
     </style>
     """,
@@ -54,7 +57,7 @@ st.markdown("---")
 st.markdown(
     """
     In the biogas industry, software concepts frequently emerge. While these types of systems promise substantial increases in gas production, 
-    the harsh process engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages ($CH_4$) 
+    the harsh process engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages (CH4) 
     rather than actual, corrected gas volumes. 
     
     Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
@@ -68,7 +71,7 @@ st.markdown(
     based on the latest insights in biochemical process engineering. 
     
     * **Calibrated with real operational data (SCADA):** Our predictive control model is continuously trained and calibrated. 
-    * **Robust & Real-time:** This ensures that predictions regarding $H_2S$ reduction and gas kinetics are robust, stable, and accurate in real-time.
+    * **Robust & Real-time:** This ensures that predictions regarding H2S reduction and gas kinetics are robust, stable, and accurate in real-time.
     """
 )
 
