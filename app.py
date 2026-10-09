@@ -208,7 +208,7 @@ with col4:
     st.markdown(
         """
         <div class="card">
-        <h4>🔧 Lower Maintenance costs</h4> 
+        <h4>🔧 Lower Maintenance costs</h4>
         <p><b>Extended oil change interval CHP.</b> Longer service life for the carbon filters.</p>
         </div>
         """,
