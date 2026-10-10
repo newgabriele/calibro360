@@ -270,3 +270,24 @@ with txt_col:
         """,
         unsafe_allow_html=True,
     )
+
+st.markdown("---")
+
+# --- ABOUT THE FOUNDER (DYNAMIC FROM GITHUB TEXT FILE) ---
+if "show_about" not in st.session_state:
+    st.session_state.show_about = False
+
+# De knop onder de contactsectie
+if st.button("👤 About Founder", type="secondary"):
+    st.session_state.show_about = not st.session_state.show_about
+
+# Als de knop aan staat, laad en toon de tekst uit de github file
+if st.session_state.show_about:
+    try:
+        with open("about_founder.md", "r", encoding="utf-8") as f:
+            bio_text = f.read()
+        st.markdown(bio_text)
+    except FileNotFoundError:
+        st.warning(
+            "Het bestand 'about_founder.md' is nog niet gevonden in de GitHub repository. Voeg dit bestand toe om de biografie weer te geven."
+        )
