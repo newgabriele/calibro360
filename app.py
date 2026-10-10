@@ -1,80 +1,125 @@
-import os
 import streamlit as st
 
-# --- PAGE CONFIGURATION ---
+# Pagina configuratie
 st.set_page_config(
-    page_title="Calibro360™ | Biogas Process Control & Digital Twin",
+    page_title="Calibro360™ | Biogas Predictive Control",
     page_icon="⚙️",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
-# --- CUSTOM CSS STYLING (SCADA & INDUSTRIAL THEME) ---
+# Custom CSS met een echte "SCADA Screen / Monitor" look
 st.markdown(
     """
     <style>
-    .main {
-        background-color: #0e1117;
-        color: #c9d1d9;
+    .stApp {
+        background-color: #edf4f0;
+        color: #212529;
     }
+    h1, h2, h3 {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #111827;
+    }
+    /* SCADA Monitor Scherm Look */
     .scada-monitor {
-        background-color: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 8px;
-        padding: 15px;
-        font-family: 'Courier New', Courier, monospace;
+        background-color: #0d131f;
+        border: 2px solid #2d3748;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.5);
         margin-bottom: 25px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        font-family: 'Courier New', Courier, monospace;
     }
     .scada-header {
+        background-color: #1a202c;
+        padding: 8px 15px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #30363d;
-        padding-bottom: 8px;
-        margin-bottom: 10px;
-        font-size: 14px;
+        justify-content: space-between;
+        border-bottom: 1px solid #2d3748;
+        font-size: 0.85rem;
+        color: #a0aec0;
+        letter-spacing: 1px;
     }
     .scada-dots {
         display: flex;
         gap: 6px;
     }
     .scada-dot {
-        width: 12px;
-        height: 12px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
     }
-    .dot-red { background-color: #ff5f56; }
-    .dot-yellow { background-color: #ffbd2e; }
-    .dot-green { background-color: #27c93f; }
+    .dot-red { background-color: #fc8181; }
+    .dot-yellow { background-color: #f6ad55; }
+    .dot-green { background-color: #68d391; box-shadow: 0 0 6px #68d391; }
+    
     .scada-body {
-        font-size: 13px;
+        padding: 20px;
+        font-size: 0.85rem;
+        color: #e2e8f0;
         line-height: 1.6;
-        color: #8b949e;
     }
-    .highlight-cyan { color: #58a6ff; font-weight: bold; }
-    .highlight-green { color: #3fb950; font-weight: bold; }
+    .scada-row {
+        margin: 6px 0;
+    }
+    .highlight-green {
+        color: #68d391;
+        font-weight: bold;
+    }
+    .highlight-cyan {
+        color: #63b3ed;
+        font-weight: bold;
+    }
+
+    .card {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid #d4e2d8;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        color: #1f2937;
+        height: 100%;
+    }
+    .contact-box {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 5px solid #2e7d32;
+        border-top: 1px solid #d4e2d8;
+        border-right: 1px solid #d4e2d8;
+        border-bottom: 1px solid #d4e2d8;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-top: 30px;
+        color: #1f2937;
+    }
+    .btn-contact {
+        display: inline-block;
+        background-color: #2e7d32;
+        color: white !important;
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.2s;
+    }
+    .btn-contact:hover {
+        background-color: #235d26;
+    }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# --- HEADER WITH TOP-RIGHT IMAGE ---
-col_title, col_img = st.columns([3, 1])
+# --- HEADER & SCADA MONITOR PANEL ---
+st.title("Calibro360™")
+st.subheader(
+    "The New Generation - Predictive Control & Process Advisory System"
+)
 
-with col_title:
-  st.title("Calibro360™")
-  st.subheader(
-      "The New Generation - Predictive Control & Process Advisory System"
-  )
-
-with col_img:
-  st.image(
-      "https://atwell.com/wp-content/uploads/2024/05/AdobeStock_552777398-scaled-1.jpeg",
-      use_container_width=True,
-  )
-
-# --- SCADA MONITOR PANEL ---
 st.markdown(
     """
     <div class="scada-monitor">
@@ -88,74 +133,161 @@ st.markdown(
             <span>STATUS: ONLINE</span>
         </div>
         <div class="scada-body">
-            <div>&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
-            <div>&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
-            <div>&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
+            <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
+            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
+            <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
         </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-# --- SIDEBAR NAVIGATION ---
-st.sidebar.title("Navigation")
-menu_option = st.sidebar.radio(
-    "Select Module:",
-    ["Dashboard & Telemetry", "Process Optimization", "About Founder"],
+st.markdown("---")
+
+# --- INTRO ---
+st.markdown(
+    """
+    In the biogas industry, software concepts frequently emerge. While these type of systems promise substantial increases in gas production, the harsh process 
+    engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages (CH₄) rather than actual, corrected gas 
+    volumes. Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
+    """
 )
 
-# --- MAIN CONTENT LOGIC ---
-if menu_option == "Dashboard & Telemetry":
-  st.markdown("### 📊 Operational Overview & CSTR Parameters")
-  col1, col2, col3 = st.columns(3)
-  with col1:
-    st.metric(
-        label="Biogas Flow Rate", value="500.0 m³/h", delta="+12.4 m³/h"
-    )
-  with col2:
-    st.metric(label="H₂S Outlet Concentration", value="< 5 ppm", delta="-375 ppm")
-  with col3:
-    st.metric(label="Methane Purity", value="54.6%", delta="+1.8%")
-
-  st.info(
-      "Welcome to Calibro360™. Use the sidebar to navigate between operational"
-      " modules and founder background information."
-  )
-
-elif menu_option == "Process Optimization":
-  st.markdown("### ⚙️ Biochemical Process & Desulfurization Optimization")
-  st.write(
-      "Detailed modeling for CSTR reactors, magnetite ($Fe_3O_4$) Direct"
-      " Interspecies Electron Transfer (DIET), and iron oxide complex dosing"
-      " routines."
-  )
-  digester_temp = st.slider("Digester Temperature (°C)", 35.0, 42.0, 38.5)
-  organic_load = st.slider(
-      "Organic Loading Rate (kg VS / m³·d)", 2.0, 6.5, 4.2
-  )
-  st.success(
-      f"Current simulation parameters: {digester_temp}°C at {organic_load} kg"
-      " VS/m³·d are within optimal biological thresholds."
-  )
-
-elif menu_option == "About Founder":
-  st.markdown("### 👨‍💻 Founder Biography")
-  # Dynamically load founder info from about_founder.md
-  if os.path.exists("about_founder.md"):
-    with open("about_founder.md", "r", encoding="utf-8") as f:
-      founder_content = f.read()
-    st.markdown(founder_content)
-  else:
-    st.warning(
-        "`about_founder.md` not found in repository root. Please ensure the"
-        " file has been created and committed."
-    )
-
-# --- FOOTER ---
-st.markdown("---")
+st.markdown("### Process Optimization by - Machine Learning & Continuous Data Calibrating")
 st.markdown(
-    "<div style='text-align: center; color: #8b949e; font-size: 12px;'>© 2026"
-    " Calibro360™ — Advanced Biogas Process Control & Engineering. All rights"
-    " reserved.</div>",
+    """
+    **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
+    insights in biochemical process engineering. Calibrated with real operational data (SCADA): Our predictive control model will be calibrated. This ensures 
+    that predictions regarding H₂S reduction and gas kinetics are robust, stable, and accurate in real-time.
+    """
+)
+
+st.markdown("---")
+
+# --- BENEFITS (2x2 GRID) ---
+st.markdown("### Benefits")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🎯 Precision & Stability</h4>
+        <p><b>Predictive dosing of additives, no spoil.</b> Maintaining a stable process also after changes in the substrates.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col2:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>📈 Maximum Yield</h4>
+        <p><b>Demonstrates up to 20% higher volume of biogas.</b> From static monitoring to a dynamic, predictive feed-cycle synchronization.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+col3, col4 = st.columns(2)
+
+with col3:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🔬 Methane Quality</h4>
+        <p>Real field data demonstrates up to an <b>8% higher quality of methane</b> compared to standard, uncalibrated in situ desulfurization methods.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col4:
+    st.markdown(
+        """
+        <div class="card">
+        <h4>🔧 Lower Maintenance costs</h4>
+        <p><b>Extended oil change interval CHP.</b> Longer service life for the carbon filters.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown("---")
+
+# --- BRAND INDEPENDENT ---
+st.markdown("### 100% Brand-Independent")
+st.markdown(
+    """
+    Every type of desulfurization additive on the market whether the different types, of iron oxide, iron hydroxide, or specific chemical blends from any manufacturer can 
+    be inputted based on its exact chemical specifications to model the biological impact.
+    
+    *For major waste haulers and plant owners, this mass reduction yields a financial saving that often exceeds the value of the extra biomethane produced.*
+    """
+)
+
+st.markdown("---")
+
+# --- FROM OPERATIONS TO THE BOARDROOM ---
+st.markdown("### From operations to the boardroom")
+st.markdown(
+    """
+    Modern operations are no longer just about "gut feeling" - they are driven by raw efficiency, strict environmental compliance, and shareholder value. 
+    When operators are equipped with clear, actionable guidelines, they can run the plant safely and more comfortably, and the results naturally follow.
+    """
+)
+
+st.markdown("---")
+
+# --- CONTACT & ADVISORY ---
+st.markdown("### Contact & Advisory Requests")
+st.markdown(
+    """
+    <div class="contact-box">
+    <p>For calibrated trial simulations, independent data analysis, or process control implementation, please contact:</p>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
+
+img_col, txt_col = st.columns([1, 4])
+
+with img_col:
+    st.image("foto 063023.jpg", use_container_width=True)
+
+with txt_col:
+    st.markdown(
+        """
+        <div style="padding-top: 5px;">
+        <p><b>Ing. Gabriele Versolato</b><br>
+        <i>Biochemical Process Consultant & Lead Architect</i></p>
+        <p>📩 <b>Email:</b> ing.versolato@gmail.com<br>
+        📞 <b>Phone:</b> +39 346 086 4380</p>
+        <a href="mailto:ing.versolato@gmail.com?subject=Inquiry%20regarding%20Calibro360™" class="btn-contact">✉ Request Information / Direct Contact</a>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown("---")
+
+# --- ABOUT THE FOUNDER (DYNAMIC FROM GITHUB TEXT FILE) ---
+if "show_about" not in st.session_state:
+    st.session_state.show_about = False
+
+# De knop onder de contactsectie
+if st.button("👤 About Founder", type="secondary"):
+    st.session_state.show_about = not st.session_state.show_about
+
+# Als de knop aan staat, laad en toon de tekst uit de github file
+if st.session_state.show_about:
+    try:
+        with open("about_founder.md", "r", encoding="utf-8") as f:
+            bio_text = f.read()
+        st.markdown(bio_text)
+    except FileNotFoundError:
+        st.warning(
+            "Het bestand 'about_founder.md' is nog niet gevonden in de GitHub repository. Voeg dit bestand toe om de biografie weer te geven."
+        )
