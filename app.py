@@ -1,5 +1,4 @@
 import os
-import requests
 import streamlit as st
 
 # --- PAGE CONFIGURATION ---
@@ -60,7 +59,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER & SCADA MONITOR PANEL WITH TOP-RIGHT IMAGE ---
+# --- HEADER WITH TOP-RIGHT IMAGE ---
 col_title, col_img = st.columns([3, 1])
 
 with col_title:
@@ -75,6 +74,7 @@ with col_img:
       use_container_width=True,
   )
 
+# --- SCADA MONITOR PANEL ---
 st.markdown(
     """
     <div class="scada-monitor">
@@ -98,10 +98,6 @@ st.markdown(
 )
 
 # --- SIDEBAR NAVIGATION ---
-st.sidebar.image(
-    "https://atwell.com/wp-content/uploads/2024/05/AdobeStock_552777398-scaled-1.jpeg",
-    use_container_width=True,
-)
 st.sidebar.title("Navigation")
 menu_option = st.sidebar.radio(
     "Select Module:",
