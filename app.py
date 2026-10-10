@@ -114,11 +114,20 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER & SCADA MONITOR PANEL ---
-st.title("Calibro360™")
-st.subheader(
-    "The New Generation - Predictive Control & Process Advisory System"
-)
+# --- HEADER & SCADA MONITOR PANEL MET AFBEELDING RECHTSBOVEN ---
+col_title, col_img = st.columns([3, 1])
+
+with col_title:
+    st.title("Calibro360™")
+    st.subheader(
+        "The New Generation - Predictive Control & Process Advisory System"
+    )
+
+with col_img:
+    st.image(
+        "https://atwell.com/wp-content/uploads/2024/05/AdobeStock_552777398-scaled-1.jpeg",
+        use_container_width=True,
+    )
 
 st.markdown(
     """
