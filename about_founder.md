@@ -13,11 +13,11 @@ In the biogas industry, complex biochemical kinetics, biological stability, and 
 **Ing. Gabriele Versolato, MSc. MBA**  
 *Lead Biochemical Process Consultant & Software Architect*
 
-With over 35 years of international industrial engineering experience, Ing. Gabriele Versolato has dedicated his career to optimizing anaerobic digestion, biological wastewater treatment, and advanced process control systems. 
+With over 35 years of international industrial engineering experience, Ing. Versolato has dedicated his career to optimizing anaerobic digestion, biological wastewater treatment, and advanced process control systems. 
 
-* **Academic Rigor:** Holds an MSc. in Architectural & Structural Engineering from **Delft University of Technology (TU Delft)**—specializing in complex systems architecture and computer-aided modeling—alongside an Executive MBA from TSM Business School.
-* **Real-World Plant Ownership:** Beyond consulting, he successfully engineered, permitted, and operated a proprietary **526 kW agricultural biogas plant** in Northern Italy, managing everything from biological fermentation stability and feedstock blending to CHP engine optimization (Jenbacher J316) and grid injection.
-* **Industrial Leadership:** Served as technical and safety coordinator for some of Europe's largest anaerobic digestion and composting complexes (including SESA Este and Bioman SpA), and executed rigorous ISO 9001 audits in collaboration with TÜV Nord for leading OEMs like Envitec Biogas.
+- **Academic Rigor:** Holds an MSc. in Architectural & Structural Engineering from **Delft University of Technology (TU Delft)**—specializing in complex systems architecture and computer-aided modeling—alongside an Executive MBA from TSM Business School.
+- **Real-World Plant Ownership:** Beyond consulting, he successfully engineered, permitted, and operated a proprietary **526 kW agricultural biogas plant** in Northern Italy, managing everything from biological fermentation stability and feedstock blending to CHP engine optimization (Jenbacher J316) and grid injection.
+- **Industrial Leadership:** Served as technical and safety coordinator for some of Europe's largest anaerobic digestion and composting complexes (including SESA Este and Bioman SpA), and executed rigorous ISO 9001 audits in collaboration with TÜV Nord for leading OEMs like Envitec Biogas.
 
 ---
 
@@ -32,3 +32,11 @@ Traditional dosing methods for desulfurization (such as crude iron chlorides) of
 By combining decades of biochemical fieldwork with modern Python-driven architecture, Streamlit automation, and applied AI, Calibro360™ empowers plant managers, engineers, and developers with real-time, data-driven predictive control. 
 
 *Lower OPEX. Maximum biological stability. Zero guesswork.*
+
+---
+
+#### The Birth of Calibrex™ Technology
+
+Every anaerobic digester is driven by a living, breathing biological ecosystem—a unique microbial community that behaves differently at every single facility, even when fed identical substrates. 
+
+To bridge this biological reality with software control without compromising proprietary industrial know-how, Ing. Versolato architected the **Calibrex™ Framework**. Because no two installations share the exact same microbial fingerprint, Calibrex™ utilizes adaptive, site-specific indicators (`Calibrex-Bio™`, `Calibrex-Buffer™`, `Calibrex-Power™`) that continuously calibrate to the unique living organism of each plant. This delivers enterprise-grade predictive control while protecting invaluable process engineering know-how.
