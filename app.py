@@ -138,13 +138,13 @@ st.markdown(
                 <div class="scada-dot dot-yellow"></div>
                 <div class="scada-dot dot-green"></div>
             </div>
-            <span style="color: #ffffff; font-weight: bold;">CALIBRO360™ // LIVE TELEMETRY & SCADA CORE</span>
+            <span style="color: #ffffff; font-weight: bold;">CALIBRO360™ // CALIBREX™ ADAPTIVE ENGINE ACTIVE</span>
             <span>STATUS: ONLINE</span>
         </div>
         <div class="scada-body">
-            <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Feed-cycle sync: <span class="highlight-green">OPTIMIZED</span></div>
-            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Fe₂O₃ / FeO Matrix Active)</div>
-            <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Efficiency Delta</span>)</div>
+            <div class="scada-row">&gt; Biogas Flow Rate: <span class="highlight-cyan">500.0 m³/h</span> | Calibrex-Bio™ Sync: <span class="highlight-green">OPTIMIZED</span></div>
+            <div class="scada-row">&gt; H₂S Inlet / Outlet: <span class="highlight-cyan">380 ppm / &lt; 5 ppm</span> (Calibrex-Buffer™ Active)</div>
+            <div class="scada-row">&gt; Methane Purity Vector: <span class="highlight-cyan">54.6% CH₄</span> (<span class="highlight-green">+8.2% Calibrex-Power™ Delta</span>)</div>
         </div>
     </div>
     """,
@@ -156,18 +156,24 @@ st.markdown("---")
 # --- INTRO ---
 st.markdown(
     """
-    In the biogas industry, software concepts frequently emerge. While these type of systems promise substantial increases in gas production, the harsh process 
-    engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages (CH₄) rather than actual, corrected gas 
-    volumes. Without a continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
+    In the biogas industry, software concepts frequently emerge. While these types of systems promise substantial increases in gas production, the harsh process 
+    engineering reality is that these static concepts are merely a visual shell. They rely on theoretical methane percentages ($CH_4$) rather than actual, corrected gas 
+    volumes. Without continuous, dynamic calculation and validated formulas under the hood, they lack any operational substance for the boardroom.
     """
 )
 
-st.markdown("### Process Optimization by - Machine Learning & Continuous Data Calibrating")
+st.markdown("### Process Optimization — Powered by the Calibrex™ Adaptive Engine")
 st.markdown(
     """
-    **Calibro360™** has completely discarded these outdated, theoretical approaches. Our tailor made platform has been built from the ground up, based on the latest 
-    insights in biochemical process engineering. Calibrated with real operational data (SCADA): Our predictive control model will be calibrated. This ensures 
-    that predictions regarding H₂S reduction and gas kinetics are robust, stable, and accurate in real-time.
+    **Calibro360™** has completely discarded outdated, static software concepts. Every anaerobic digester is driven by a living, breathing biological ecosystem—a unique microbial community that differs by definition at every installation. 
+    
+    Because no two plants share the exact same biological fingerprint, static models fail. Built from the ground up on deep biochemical engineering reality, our platform utilizes the proprietary **Calibrex™ Adaptive Engine**. Calibrex continuously synchronizes with each plant's unique living organism through site-specific intelligence layers:
+    
+    * **Calibrex-Bio™:** Adaptive tracking of organic loading rates and biological conversion efficiency, uniquely tailored to the installation's specific microbial activity and feedstock variations.
+    * **Calibrex-Buffer™:** Advanced kinetic modeling for plant-specific additive buffer accumulation and proactive, predictable $H_2S$ mitigation.
+    * **Calibrex-Power™:** High-precision integration and optimization of biogas quality and CHP engine performance parameters calibrated to the local asset.
+
+    *Lower OPEX. Maximum biological stability. Zero guesswork.*
     """
 )
 
@@ -230,7 +236,7 @@ st.markdown("---")
 st.markdown("### 100% Brand-Independent")
 st.markdown(
     """
-    Every type of desulfurization additive on the market whether the different types, of iron oxide, iron hydroxide, or specific chemical blends from any manufacturer can 
+    Every type of desulfurization additive on the market—whether the different types of iron oxide, iron hydroxide, or specific chemical blends from any manufacturer—can 
     be inputted based on its exact chemical specifications to model the biological impact.
     
     *For major waste haulers and plant owners, this mass reduction yields a financial saving that often exceeds the value of the extra biomethane produced.*
@@ -286,11 +292,9 @@ st.markdown("---")
 if "show_about" not in st.session_state:
     st.session_state.show_about = False
 
-# De knop onder de contactsectie
 if st.button("👤 About Founder", type="secondary"):
     st.session_state.show_about = not st.session_state.show_about
 
-# Als de knop aan staat, laad en toon de tekst uit de github file
 if st.session_state.show_about:
     try:
         with open("about_founder.md", "r", encoding="utf-8") as f:
